@@ -34,7 +34,7 @@ jobs:
           command: echo username=$username>evironment_variables.txt;echo password=$password>>evironment_variables.txt;cat evironment_variables.txt;
       - run:
           name: Running tests
-          command: mvn clean test
+          command: mvn test
       - run:
           name: Generate allure report
           command: mvn allure:report

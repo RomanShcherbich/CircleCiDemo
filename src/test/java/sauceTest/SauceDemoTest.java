@@ -1,6 +1,7 @@
 package sauceTest;
 
 import base.BaseTest;
+import constants.Environment;
 import io.qameta.allure.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -15,11 +16,8 @@ import java.time.Duration;
 
 public class SauceDemoTest extends BaseTest {
 
-//    String username = System.getenv("username") == null ? "standard_user" : System.getenv("username");
-//    String password = System.getenv("password") == null ? "secret_sauce" : System.getenv("password");
-    String username = System.getenv("username");
-    String password = System.getenv("password");
-
+    private String username = Environment.USERNAME;
+    private String password = Environment.PASSWORD;
 
     @Flaky
     @Description("Тест с использование гибкого ожидания")

@@ -4,9 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static constants.Environment.BASE_URL;
+
 public class LoginPage extends BasePage {
 
-    public static final String URL = "https://www.saucedemo.com";
+    public static final String URL = BASE_URL;
     public static final By USERNAME_INPUT = By.id("user-name");
     public static final By PASSWORD_INPUT = By.id("password");
     public static final By LOGIN_BUTTON = By.id("login-button");

@@ -12,6 +12,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import steps.MainSteps;
+import utils.PropertyUtils;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -24,8 +25,7 @@ public class BaseTest {
 
     @BeforeTest
     public void setUp(ITestContext context) {
-        String driverPath = System.getenv("driver_path") == null ?
-                "src/test/resources/webdrivers/linux/88/chromedriver" : System.getenv("driver_path");
+        String driverPath = PropertyUtils.getSystemProperty("driver_path");
         System.setProperty("webdriver.chrome.driver", driverPath);
         driver = new ChromeDriver();
         driver.manage().window().setPosition(new Point(0, 0));
