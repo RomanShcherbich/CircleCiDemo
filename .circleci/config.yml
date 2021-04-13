@@ -34,7 +34,7 @@ jobs:
           command: echo username=$username>evironment_variables.txt;echo password=$password>>evironment_variables.txt;cat evironment_variables.txt;
       - run:
           name: Running tests
-          command: mvn clean install
+          command: mvn clean test
       - run:
           name: Generate allure report
           command: mvn allure:report
@@ -52,7 +52,7 @@ workflows:
   periodical:
     triggers:
       - schedule:
-          cron: "1 4,8,12 * * *"
+          cron: "1 4 * * *"
           filters:
             branches:
               only:
