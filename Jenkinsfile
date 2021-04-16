@@ -10,7 +10,7 @@ pipeline {
         stage('Testing') {
             steps {
                 // Get some code from a GitHub repository
-                git 'https://github.com/RomanShcherbich/CircleCiDemo'
+                git branch: '$BRANCH', changelog: false, poll: false, url: 'https://github.com/RomanShcherbich/CircleCiDemo'
 
                 // Run Maven on a Unix agent.
                 sh "mvn test -Dmaven.test.failure.ignore=true"
