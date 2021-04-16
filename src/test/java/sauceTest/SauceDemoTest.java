@@ -13,6 +13,8 @@ import steps.MainSteps;
 import utils.AllureUtils;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SauceDemoTest extends BaseTest {
 
@@ -52,6 +54,11 @@ public class SauceDemoTest extends BaseTest {
         loginPage.openPage();
         loginPage.waitLoginPageLoaded();
         ProductsPage productsPage = loginPage.validLogin(username, password);
+        Map<String, String> map = new HashMap<>();
+        map.put("username", "password");
+        map.put("key2", "value3");
+        map.put("key3", "value4");
+        MainSteps.stepWithAttachment(map);
         productsPage.isProductPageLoaded();
     }
 
