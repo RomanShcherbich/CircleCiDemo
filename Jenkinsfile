@@ -6,6 +6,10 @@ pipeline {
         maven "M3"
     }
 
+    parameters {
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+    }
+
     stages {
         stage('Environment') {
             steps {
@@ -17,7 +21,7 @@ pipeline {
         stage('Testing') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: '$BRANCH', changelog: false, poll: false, url: 'https://github.com/RomanShcherbich/CircleCiDemo'
+                git branch: '${params.BRANCH}', changelog: false, poll: false, url: 'https://github.com/RomanShcherbich/CircleCiDemo'
 
                 // Run Maven on a Unix agent.
                 sh "mvn test -Dmaven.test.failure.ignore=true"
