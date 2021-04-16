@@ -30,9 +30,6 @@ jobs:
           name: Setting chmod for Chrome
           command: chmod 777 $driver_path
       - run:
-          name: Get environment variables
-          command: echo username=$username>evironment_variables.txt;echo password=$password>>evironment_variables.txt;cat evironment_variables.txt;
-      - run:
           name: Running tests
           command: mvn test
       - run:
