@@ -7,6 +7,13 @@ pipeline {
     }
 
     stages {
+        stage('Environment') {
+            steps {
+                sh "whoami"
+                sh "google-chrome --version"
+            }
+        }
+
         stage('Testing') {
             steps {
                 // Get some code from a GitHub repository
