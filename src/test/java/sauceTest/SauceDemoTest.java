@@ -17,6 +17,7 @@ import java.time.Duration;
 public class SauceDemoTest extends BaseTest {
 
     private String username = Environment.USERNAME;
+    private String locked_user = Environment.USERNAME_LOCKED;
     private String password = Environment.PASSWORD;
 
     @Flaky
@@ -89,7 +90,7 @@ public class SauceDemoTest extends BaseTest {
     @Link("https://app.circleci.com/settings/project/github/RomanShcherbich/SeleniumAdvancedDemoLesson/environment-variables?return-to=https%3A%2F%2Fapp.circleci.com%2Fpipelines%2Fgithub%2FRomanShcherbich%2FSeleniumAdvancedDemoLesson")
     @Description("Circleci config test to provide environment variables")
     public void externalEnvironmentsTest(){
-        Assert.assertEquals(username , "standard_user", "External variable [username] is " + username);
+        Assert.assertEquals(locked_user , "locked_out_user", "External variable [locked_user] is " + locked_user);
     }
 
 
