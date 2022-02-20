@@ -6,6 +6,7 @@ import io.qameta.allure.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.ProductsPage;
@@ -28,14 +29,14 @@ public class SauceDemoTest extends BaseTest {
     @TmsLink("4")
     @Test(description = "Test to demonstrate fluent waiter", groups = {"flacky"})
     @Parameters("keyword")
-    public void testJsWaiter(String keyword) {
+    public void testJsWaiter(@Optional String keyword) {
         MainSteps.step("open page 1");
         loginPage.openPage();
         MainSteps.stepKeyword(keyword);
         ProductsPage productsPage = loginPage.validLogin(username, password);
         FluentWait<ProductsPage> fluent = new FluentWait<>(productsPage)
-                .withTimeout(Duration.ofSeconds(60))
-                .pollingEvery(Duration.ofSeconds(5))
+                .withTimeout(Duration.ofSeconds(1))
+                .pollingEvery(Duration.ofSeconds(1))
                 .ignoring(NoSuchElementException.class);
         fluent.until(ProductsPage::isProductPageLoaded);
 

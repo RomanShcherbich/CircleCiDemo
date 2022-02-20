@@ -4,6 +4,7 @@ package steps;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
