@@ -9,8 +9,8 @@ jobs:
       - image: circleci/openjdk:11.0.8-jdk-browsers
     working_directory: ~/repo
     environment:
-      maven.compiler.source: 11
-      maven.compiler.target: 11
+      maven_compiler_source: 11
+      maven_compiler_target: 11
       # get from git and get maven dependencies
     steps:
       - checkout
@@ -30,7 +30,7 @@ jobs:
           command: google-chrome --version
       - run:
           name: Check CirceCi env
-          command: echo $maven.compiler.source
+          command: echo $maven_compiler_source
       - run:
           name: Setting chmod for Chrome
           command: chmod 777 $driver_path
