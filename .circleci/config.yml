@@ -36,7 +36,7 @@ jobs:
           command: chmod 777 $driver_path
       - run:
           name: Running tests
-          command: mvn test -Dmaven.compiler.source=11  -Dmaven.compiler.target=11
+          command: mvn test -Dmaven.compiler.source=$maven_compiler_source -Dmaven.compiler.target=$maven_compiler_source
       - run:
           name: Generate allure report
           command: mvn allure:report
