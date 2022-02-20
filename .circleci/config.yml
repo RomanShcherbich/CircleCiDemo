@@ -9,7 +9,9 @@ jobs:
       - image: circleci/openjdk:11.0.8-jdk-browsers
     working_directory: ~/repo
     environment:
-    # get from git and get maven dependencies
+      maven.compiler.source: 11
+      maven.compiler.target: 11
+      # get from git and get maven dependencies
     steps:
       - checkout
       - restore_cache:
