@@ -6,10 +6,7 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.IReporter;
-import org.testng.IResultMap;
 import org.testng.ITestContext;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.LoginPage;
 import steps.MainSteps;
@@ -26,7 +23,7 @@ public class BaseTest {
 
     @BeforeTest
     public void setUp(ITestContext context) {
-        String driverPath = PropertyUtils.getSystemProperty("driver_path");
+        String driverPath = PropertyUtils.getEnv("driver_path");
         System.setProperty("webdriver.chrome.driver", driverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox"); //Bypass OS security model

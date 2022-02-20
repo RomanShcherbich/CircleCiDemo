@@ -8,10 +8,11 @@ import java.util.Properties;
 public class PropertyUtils {
 
     private static final String CONFIG_PATH = "src/test/resources/config.properties";
-    private static final Properties PROPERTIES = System.getProperties();
+    private static Properties PROPERTIES = null;
 
 
     private static void readProperties() {
+        PROPERTIES = System.getProperties();
         try {
             PROPERTIES.load(new FileInputStream(new File(CONFIG_PATH)));
         } catch (IOException e) {
@@ -19,11 +20,17 @@ public class PropertyUtils {
         }
     }
 
-    public static String getSystemProperty(String propertyKey) {
+    public static String get(String propertyKey) {
+        if (PROPERTIES == null) {
+            readProperties();
+        }
+        return PROPERTIES.getProperty(propertyKey);
+    }
+
+    public static String getEnv(String propertyKey) {
         String envProp = System.getenv(propertyKey);
         if (envProp == null) {
-            readProperties();
-            envProp = PROPERTIES.getProperty(propertyKey);
+            envProp = get(propertyKey);
         }
         return envProp;
     }
