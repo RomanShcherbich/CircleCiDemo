@@ -29,11 +29,14 @@ jobs:
           name: Get chrome version
           command: google-chrome --version
       - run:
+          name: Check CirceCi env
+          command: echo maven.compiler.source
+      - run:
           name: Setting chmod for Chrome
           command: chmod 777 $driver_path
       - run:
           name: Running tests
-          command: mvn test
+          command: mvn test -Dmaven.compiler.source=11  -Dmaven.compiler.target=11
       - run:
           name: Generate allure report
           command: mvn allure:report
